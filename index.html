@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customer Escalation Resolution Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Customer Escalation Resolution Agent</h1>
+    <p>Understand the customer. Investigate the problem. Resolve it.</p>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT: complaint input -->
+    <section class="panel" aria-labelledby="complaint-title">
+      <h2 id="complaint-title">1. Enter the complaint</h2>
+
+      <div class="samples">
+        <span class="hint">Try a sample:</span>
+        <button type="button" class="chip" data-sample="double">Double charge</button>
+        <button type="button" class="chip" data-sample="late">Late order refund</button>
+        <button type="button" class="chip" data-sample="legal">Repeated failure, legal threat</button>
+      </div>
+
+      <form id="complaint-form">
+        <label for="customer-id">Customer ID</label>
+        <input id="customer-id" type="text" placeholder="e.g. CUS-10482" required>
+
+        <label for="order-id">Order ID <span class="optional">(optional)</span></label>
+        <input id="order-id" type="text" placeholder="e.g. ORD-77213">
+
+        <label for="complaint">What happened?</label>
+        <textarea id="complaint" rows="6" placeholder="Paste the customer's complaint here..." required></textarea>
+
+        <button type="submit" class="primary" id="run-btn">Investigate complaint</button>
+      </form>
+    </section>
+
+    <!-- RIGHT: results -->
+    <section class="results" aria-live="polite">
+      <div class="panel">
+        <h2>2. Agent investigation</h2>
+        <div id="empty" class="empty">
+          Submit a complaint and each agent will report what it found, one step at a time.
+        </div>
+        <ol id="pipeline" class="pipeline" hidden></ol>
+      </div>
+
+      <div id="decision" class="panel decision" hidden>
+        <h2>3. Final decision</h2>
+        <div id="decision-body"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Demo mode: results come from sample data in <code>script.js</code>. Replace <code>runAgent()</code> with a call to your backend.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
