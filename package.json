@@ -1,0 +1,7 @@
+{
+  "name": "escalation-agent",
+  "version": "1.0.0",
+  "description": "AI Customer Escalation Resolution Agent: frontend and simple Node backend",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" }
+}
